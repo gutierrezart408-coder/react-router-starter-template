@@ -1,17 +1,13 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import { Landing } from "../components/landing";
 
 export function meta({}: Route.MetaArgs) {
 	return [
-		{ title: "New React Router App" },
-		{ name: "description", content: "Welcome to React Router!" },
+		{ title: "ChainLinkOS - Blockchain-Powered Supply Chain" },
+		{ name: "description", content: "Enterprise supply chain platform combining blockchain and logistics for transparent, immutable shipment tracking." },
 	];
 }
 
-export function loader({ context }: Route.LoaderArgs) {
-	return { message: context.cloudflare.env.VALUE_FROM_CLOUDFLARE };
-}
-
-export default function Home({ loaderData }: Route.ComponentProps) {
-	return <Welcome message={loaderData.message} />;
+export default function Home() {
+	return <Landing />;
 }
