@@ -1,26 +1,5 @@
 import { Link } from "react-router";
 
-const hashchainPattern = `
-<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <pattern id="hashchain" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-      <rect width="100" height="100" fill="none"/>
-      <circle cx="25" cy="25" r="3" fill="rgba(6, 182, 212, 0.05)"/>
-      <circle cx="75" cy="25" r="3" fill="rgba(6, 182, 212, 0.05)"/>
-      <circle cx="25" cy="75" r="3" fill="rgba(6, 182, 212, 0.05)"/>
-      <circle cx="75" cy="75" r="3" fill="rgba(6, 182, 212, 0.05)"/>
-      <line x1="25" y1="25" x2="75" y2="25" stroke="rgba(6, 182, 212, 0.03)" stroke-width="1"/>
-      <line x1="25" y1="75" x2="75" y2="75" stroke="rgba(6, 182, 212, 0.03)" stroke-width="1"/>
-      <line x1="25" y1="25" x2="25" y2="75" stroke="rgba(6, 182, 212, 0.03)" stroke-width="1"/>
-      <line x1="75" y1="25" x2="75" y2="75" stroke="rgba(6, 182, 212, 0.03)" stroke-width="1"/>
-    </pattern>
-  </defs>
-  <rect width="100" height="100" fill="url(#hashchain)"/>
-</svg>
-`;
-
-const encodedPattern = `data:image/svg+xml;base64,${btoa(hashchainPattern)}`;
-
 export function Landing() {
 	return (
 		<div className="min-h-screen bg-slate-900 text-white" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' fill='none'/%3E%3Ccircle cx='25' cy='25' r='2.5' fill='rgba(6, 182, 212, 0.08)'/%3E%3Ccircle cx='75' cy='25' r='2.5' fill='rgba(6, 182, 212, 0.08)'/%3E%3Ccircle cx='50' cy='50' r='2.5' fill='rgba(6, 182, 212, 0.08)'/%3E%3Ccircle cx='25' cy='75' r='2.5' fill='rgba(6, 182, 212, 0.08)'/%3E%3Ccircle cx='75' cy='75' r='2.5' fill='rgba(6, 182, 212, 0.08)'/%3E%3Cline x1='25' y1='25' x2='75' y2='25' stroke='rgba(6, 182, 212, 0.05)' stroke-width='0.5'/%3E%3Cline x1='75' y1='25' x2='75' y2='75' stroke='rgba(6, 182, 212, 0.05)' stroke-width='0.5'/%3E%3Cline x1='75' y1='75' x2='25' y2='75' stroke='rgba(6, 182, 212, 0.05)' stroke-width='0.5'/%3E%3Cline x1='25' y1='75' x2='25' y2='25' stroke='rgba(6, 182, 212, 0.05)' stroke-width='0.5'/%3E%3Cline x1='25' y1='25' x2='50' y2='50' stroke='rgba(6, 182, 212, 0.03)' stroke-width='0.5'/%3E%3Cline x1='75' y1='25' x2='50' y2='50' stroke='rgba(6, 182, 212, 0.03)' stroke-width='0.5'/%3E%3Cline x1='75' y1='75' x2='50' y2='50' stroke='rgba(6, 182, 212, 0.03)' stroke-width='0.5'/%3E%3Cline x1='25' y1='75' x2='50' y2='50' stroke='rgba(6, 182, 212, 0.03)' stroke-width='0.5'/%3E%3C/svg%3E")` }}>
@@ -33,9 +12,10 @@ export function Landing() {
 					<div className="flex gap-8 items-center">
 						<a href="#features" className="hover:text-cyan-300 transition">Features</a>
 						<a href="#how-it-works" className="hover:text-cyan-300 transition">How it Works</a>
-						<button className="bg-gradient-to-r from-cyan-300 to-cyan-400 text-slate-950 px-6 py-2 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-300/50 transition">
+						<Link to="/login" className="hover:text-cyan-300 transition">Sign In</Link>
+						<Link to="/login" className="bg-gradient-to-r from-cyan-300 to-cyan-400 text-slate-950 px-6 py-2 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-300/50 transition">
 							Get Started
-						</button>
+						</Link>
 					</div>
 				</div>
 			</nav>
@@ -50,9 +30,9 @@ export function Landing() {
 						ChainLinkOS combines distributed ledger technology with logistics infrastructure for transparent, immutable shipment tracking and supply chain management.
 					</p>
 					<div className="flex flex-col sm:flex-row gap-4 justify-center">
-						<button className="bg-gradient-to-r from-cyan-300 to-cyan-400 text-slate-950 px-8 py-3 rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-cyan-300/50 transition">
+						<Link to="/login" className="bg-gradient-to-r from-cyan-300 to-cyan-400 text-slate-950 px-8 py-3 rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-cyan-300/50 transition">
 							Start Your Journey
-						</button>
+						</Link>
 						<button className="border border-cyan-300 text-cyan-300 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-cyan-300/10 transition">
 							View Demo
 						</button>
@@ -177,9 +157,9 @@ export function Landing() {
 					<h2 className="text-4xl font-bold mb-6">Ready to Transform Your Supply Chain?</h2>
 					<p className="text-xl text-slate-300 mb-8">Join enterprise logistics companies trusting blockchain-backed transparency.</p>
 					<div className="flex flex-col sm:flex-row gap-4 justify-center">
-						<button className="bg-gradient-to-r from-cyan-300 to-cyan-400 text-slate-950 px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-cyan-300/50 transition">
+						<Link to="/login" className="bg-gradient-to-r from-cyan-300 to-cyan-400 text-slate-950 px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-cyan-300/50 transition">
 							Start Free Trial
-						</button>
+						</Link>
 						<button className="border border-cyan-300 text-cyan-300 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-cyan-300/10 transition">
 							Book a Demo
 						</button>
