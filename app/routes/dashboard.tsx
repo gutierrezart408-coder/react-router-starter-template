@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 import type { User } from "@supabase/supabase-js";
 import type { Route } from "./+types/dashboard";
 import { getSupabaseClient } from "../lib/supabase";
@@ -62,15 +62,18 @@ export default function Dashboard({ loaderData }: Route.ComponentProps) {
 		<div className="min-h-screen bg-slate-900 text-white">
 			<nav className="border-b border-slate-800 sticky top-0 z-50 bg-slate-900/80 backdrop-blur">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-					<div className="text-2xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-400 bg-clip-text text-transparent">
+					<Link to="/" className="text-2xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-400 bg-clip-text text-transparent hover:opacity-80 transition">
 						ChainLinkOS
+					</Link>
+					<div className="flex gap-6 items-center">
+						<Link to="/docs" className="text-slate-300 hover:text-cyan-300 transition text-sm">API Docs</Link>
+						<button
+							onClick={handleSignOut}
+							className="border border-slate-700 text-slate-300 px-4 py-2 rounded-lg hover:border-cyan-300/50 hover:text-cyan-300 transition"
+						>
+							Sign Out
+						</button>
 					</div>
-					<button
-						onClick={handleSignOut}
-						className="border border-slate-700 text-slate-300 px-4 py-2 rounded-lg hover:border-cyan-300/50 hover:text-cyan-300 transition"
-					>
-						Sign Out
-					</button>
 				</div>
 			</nav>
 

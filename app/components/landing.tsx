@@ -12,6 +12,7 @@ export function Landing() {
 					<div className="flex gap-8 items-center">
 						<a href="#features" className="hover:text-cyan-300 transition">Features</a>
 						<a href="#how-it-works" className="hover:text-cyan-300 transition">How it Works</a>
+						<Link to="/docs" className="hover:text-cyan-300 transition">API Docs</Link>
 						<Link to="/login" className="hover:text-cyan-300 transition">Sign In</Link>
 						<Link to="/login" className="bg-gradient-to-r from-cyan-300 to-cyan-400 text-slate-950 px-6 py-2 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-300/50 transition">
 							Get Started
@@ -182,7 +183,7 @@ export function Landing() {
 							<ul className="space-y-2 text-slate-400 text-sm">
 								<li><a href="#" className="hover:text-cyan-300 transition">Features</a></li>
 								<li><a href="#" className="hover:text-cyan-300 transition">Pricing</a></li>
-								<li><a href="#" className="hover:text-cyan-300 transition">API Docs</a></li>
+								<li><Link to="/docs" className="hover:text-cyan-300 transition">API Docs</Link></li>
 							</ul>
 						</div>
 						<div>

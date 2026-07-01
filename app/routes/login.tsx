@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 import type { Route } from "./+types/login";
 import { getSupabaseClient } from "../lib/supabase";
 
@@ -52,79 +52,90 @@ export default function Login({ loaderData }: Route.ComponentProps) {
 	}
 
 	return (
-		<div className="min-h-screen bg-slate-900 text-white flex items-center justify-center px-4">
-			<div className="w-full max-w-md">
-				<div className="text-center mb-8">
-					<div className="text-3xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-400 bg-clip-text text-transparent">
+		<div className="min-h-screen bg-slate-900 text-white flex flex-col">
+			<nav className="border-b border-slate-800 px-4 py-4">
+				<div className="max-w-7xl mx-auto flex items-center justify-between">
+					<Link to="/" className="text-xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-400 bg-clip-text text-transparent hover:opacity-80 transition">
 						ChainLinkOS
-					</div>
+					</Link>
+					<Link to="/docs" className="text-slate-300 hover:text-cyan-300 transition text-sm">API Docs</Link>
 				</div>
+			</nav>
 
-				<div className="bg-slate-800/50 border border-slate-700 rounded-lg p-8">
-					<h1 className="text-2xl font-semibold mb-6 text-center">
-						{mode === "signin" ? "Sign In" : "Create Account"}
-					</h1>
-
-					<form onSubmit={handleSubmit} className="space-y-4">
-						<div>
-							<label htmlFor="email" className="block text-sm text-slate-400 mb-1">
-								Email
-							</label>
-							<input
-								id="email"
-								type="email"
-								required
-								value={email}
-								onChange={(e) => setEmail(e.target.value)}
-								className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-300 transition"
-								placeholder="you@company.com"
-							/>
+			<div className="flex-1 flex items-center justify-center px-4">
+				<div className="w-full max-w-md">
+					<div className="text-center mb-8">
+						<div className="text-3xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-400 bg-clip-text text-transparent">
+							ChainLinkOS
 						</div>
-						<div>
-							<label htmlFor="password" className="block text-sm text-slate-400 mb-1">
-								Password
-							</label>
-							<input
-								id="password"
-								type="password"
-								required
-								minLength={6}
-								value={password}
-								onChange={(e) => setPassword(e.target.value)}
-								className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-300 transition"
-								placeholder="••••••••"
-							/>
-						</div>
+					</div>
 
-						{error && (
-							<p className="text-red-400 text-sm">{error}</p>
-						)}
-						{message && (
-							<p className="text-cyan-300 text-sm">{message}</p>
-						)}
+					<div className="bg-slate-800/50 border border-slate-700 rounded-lg p-8">
+						<h1 className="text-2xl font-semibold mb-6 text-center">
+							{mode === "signin" ? "Sign In" : "Create Account"}
+						</h1>
 
-						<button
-							type="submit"
-							disabled={loading}
-							className="w-full bg-gradient-to-r from-cyan-300 to-cyan-400 text-slate-950 px-6 py-2 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-300/50 transition disabled:opacity-50"
-						>
-							{loading ? "Please wait..." : mode === "signin" ? "Sign In" : "Sign Up"}
-						</button>
-					</form>
+						<form onSubmit={handleSubmit} className="space-y-4">
+							<div>
+								<label htmlFor="email" className="block text-sm text-slate-400 mb-1">
+									Email
+								</label>
+								<input
+									id="email"
+									type="email"
+									required
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
+									className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-300 transition"
+									placeholder="you@company.com"
+								/>
+							</div>
+							<div>
+								<label htmlFor="password" className="block text-sm text-slate-400 mb-1">
+									Password
+								</label>
+								<input
+									id="password"
+									type="password"
+									required
+									minLength={6}
+									value={password}
+									onChange={(e) => setPassword(e.target.value)}
+									className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-300 transition"
+									placeholder="••••••••"
+								/>
+							</div>
 
-					<p className="text-center text-sm text-slate-400 mt-6">
-						{mode === "signin" ? "Don't have an account?" : "Already have an account?"}{" "}
-						<button
-							onClick={() => {
-								setMode(mode === "signin" ? "signup" : "signin");
-								setError(null);
-								setMessage(null);
-							}}
-							className="text-cyan-300 hover:text-cyan-200 transition"
-						>
-							{mode === "signin" ? "Sign up" : "Sign in"}
-						</button>
-					</p>
+							{error && (
+								<p className="text-red-400 text-sm">{error}</p>
+							)}
+							{message && (
+								<p className="text-cyan-300 text-sm">{message}</p>
+							)}
+
+							<button
+								type="submit"
+								disabled={loading}
+								className="w-full bg-gradient-to-r from-cyan-300 to-cyan-400 text-slate-950 px-6 py-2 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-300/50 transition disabled:opacity-50"
+							>
+								{loading ? "Please wait..." : mode === "signin" ? "Sign In" : "Sign Up"}
+							</button>
+						</form>
+
+						<p className="text-center text-sm text-slate-400 mt-6">
+							{mode === "signin" ? "Don't have an account?" : "Already have an account?"}{" "}
+							<button
+								onClick={() => {
+									setMode(mode === "signin" ? "signup" : "signin");
+									setError(null);
+									setMessage(null);
+								}}
+								className="text-cyan-300 hover:text-cyan-200 transition"
+							>
+								{mode === "signin" ? "Sign up" : "Sign in"}
+							</button>
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
